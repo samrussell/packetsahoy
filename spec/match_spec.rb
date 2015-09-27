@@ -1,3 +1,4 @@
+require 'spec_helper'
 require "match"
 
 # A Match describes a combination of IP/protocol/port
