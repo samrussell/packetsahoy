@@ -1,18 +1,45 @@
 require 'netaddr'
 
 class Match
-  def source_ip
-  end
+  attr_accessor :source_ip
+  attr_accessor :destination_ip
+  attr_accessor :source_port
+  attr_accessor :destination_port
+  attr_accessor :protocol
 
-  def destination_ip
-  end
+  def initialize(source_ip = nil,
+                 destination_ip = nil,
+                 source_port = nil,
+                 destination_port = nil,
+                 protocol = nil)
+    if source_ip
+      @source_ip = source_ip
+    else
+      @source_ip = NetAddr::CIDR.create("0.0.0.0/0")
+    end
 
-  def source_port
-  end
+    if destination_ip
+      @destination_ip = destination_ip
+    else
+      @destination_ip = NetAddr::CIDR.create("0.0.0.0/0")
+    end
 
-  def destination_port
-  end
+    if source_port
+      @source_port = source_port
+    else
+      @source_port = nil
+    end
 
-  def protocol
+    if destination_port
+      @destination_port = destination_port
+    else
+      @destination_port = nil
+    end
+
+    if protocol
+      @protocol = protocol
+    else
+      @protocol = nil
+    end
   end
 end
